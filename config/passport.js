@@ -1,7 +1,6 @@
-import local from 'passport-local';
+const local = require('passport-local');
 const LocalStrategy = local.Strategy;
-import bcrypt from 'bcrypt';
-
+const bcrypt = require('bcrypt');
 // Load User model
 import User from '../models/User'
 

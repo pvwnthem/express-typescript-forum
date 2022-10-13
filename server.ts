@@ -1,9 +1,11 @@
 import express from 'express';
 import passport from 'passport';
 import path from 'path';
+import expressLayouts from 'express-ejs-layouts';
 import index from './routes/index';
 import auth from './routes/auth';
 import api from './routes/api';
+import flash from 'connect-flash';
 import ejs from 'ejs'
 import * as bodyParser from 'body-parser';
 import session from 'express-session';
@@ -24,6 +26,17 @@ app.use(session({
    
 }));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.use(flash());
+
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 const port: Number = 8080;
 
 app.use('/', index);

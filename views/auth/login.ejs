@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+   
+    <link href=
+"https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+        rel="stylesheet">
+    <title>Login</title>
+  </head>
+  <div class="md:flex">
+  <div class="md:shrink-0">
+  <div id="form-wrap">
+  <div id="container" class="mx-auto md:w-screen md:h-screen flex justify-center items-center py-48">
+      <div id="card" class=" mx-auto w-52 rounded-xl bg-gray-800 py-4 px-4 shadow-md h-full ">
+        <div id="logintxt" class="text-5xl flex justify-center font-bold text-white py-16 ">Login</div>
+        <%- include ("../partials/messages"); %>
+        <form action="/users/login" method="POST">
+          <div class="px-12 py-14 pb-8">
+            <div class="w-full mb-8">
+              <div class="flex justify-center">
+               <input type='text' placeholder="Email" type="email" id="email" name="email"
+                  class="px-8  w-full border rounded-lg py-4 text-gray-700 focus:outline-none items-center shadow-md" />
+              </div>
+          </div>
+          <div class="w-full mb-2">
+            <div class="flex justify-center">   
+               <input type='password' placeholder="Password" type="password" id="password" name="password"
+                  class="px-8 w-full border rounded-lg py-4 text-gray-700 focus:outline-none" />
+            </div>
+         </div>
+        </form>
+         
+         <div class="py-14">
+          <button type="submit" class="w-full mt-6 bg-indigo-500 hover:bg-blue-700 text-white font-bold text-lg py-4 px-4 rounded-md focus:outline-none">Log In</button>
+          <div id="footer"class="    w-200% text-white font-light text-s flex justify-center ">
+            <div class="text-white font-light text-s flex justify-center py-4">
+              Need Help or Have A Suggestion?:     <a href="mailto://admin@buckeystarbreaker.com" target="_blank"> Click Here</a>
+              <div>
+                
+              </div>
+              
+            </div>
+            
+          
+          </div>
+          
+          
+            
+           
+          </div>
+          <div>
+            
+          </div>
+        </div>
+        
+          
+          
+      </div>
+        </div>
+      </body>
+    </div>
+  
+    </div>
+  </div>
+</div>
+</div>
+  </html>
+<style>
+  :root {
+    --main-bg-color: rgb(26, 24, 24);
+    --loginbox-bg-color: #363636
+  } 
+  #card {
+    background: var(--loginbox-bg-color);
+  }
+  html {
+    background-color: var(--main-bg-color)
+  }
+  #container {
+    background-color: var(--main-bg-color);
+    
+  }
+  
+  
+
+</style>
+
+</html>
+
+
+
+
+
+
