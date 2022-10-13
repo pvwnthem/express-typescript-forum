@@ -4,9 +4,11 @@ import uuid from "uuid";
 
 
 
-function getuuid() {
-  return uuid.v4()
+function getuuid() : String {
+  return uuid.v4();
+
 }
+
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -15,11 +17,26 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
       type: String,
-      required: true
+      required: true,
+      unique: true,
+      match: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    },
+    bio: {
+      type: String
+    },
+    avatar: {
+      type: String,
+      required: false
     },
     password: {
       type: String,
       required: true
+    },
+    followers: {
+      type: [String]
+    },
+    following: {
+      type: [String]
     },
     date: {
       type: Date,
@@ -28,6 +45,10 @@ const UserSchema = new mongoose.Schema({
     uid: {
       type: String,
       default: getuuid()
+    },
+    isEmailShown: {
+      type: Boolean,
+      required: true
     }
     
   });
