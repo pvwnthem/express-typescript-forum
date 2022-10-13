@@ -1,8 +1,9 @@
 import express from 'express';
 import passport from 'passport';
+import auth from '../config/auth'
 const router = express.Router();
 
-router.get('/login', (req: any, res: any) => {
+router.get('/login', auth.forwardAuthenticated, (req: any, res: any) => {
     res.render('login')
 })
 router.post('/login', (req, res, next) => {
