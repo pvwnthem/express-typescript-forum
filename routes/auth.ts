@@ -14,4 +14,9 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+
+router.get('/register', auth.forwardAuthenticated, (req: any, res: any) => {
+    res.render('login')
+})
+
 export default router;
