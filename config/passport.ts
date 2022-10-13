@@ -1,10 +1,10 @@
-const local = require('passport-local');
+import local from 'passport-local'
 const LocalStrategy = local.Strategy;
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 // Load User model
 import User from '../models/User'
 
-module.exports = function(passport) {
+module.exports = function(passport: any) {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       // Match user
@@ -28,12 +28,12 @@ module.exports = function(passport) {
     })
   );
 
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser(function(user: any, done: any) {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+  passport.deserializeUser(function(id: any, done: any) {
+    User.findById(id, function(err: any, user: any) {
       done(err, user);
     });
   });
