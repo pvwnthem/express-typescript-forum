@@ -23,6 +23,7 @@ app.use(session({
     }
    
 }));
+app.set('view engine', 'ejs');
 const port: Number = 8080;
 
 app.use('/', index);
