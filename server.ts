@@ -9,6 +9,12 @@ import flash from 'connect-flash';
 import ejs from 'ejs'
 import * as bodyParser from 'body-parser';
 import session from 'express-session';
+import local from 'passport-local'
+const LocalStrategy = local.Strategy;
+import bcrypt from 'bcrypt';
+// Load User model
+import User from './models/User'
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'views')));
@@ -17,14 +23,47 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: true,
-    }
-   
-}));
+  secret: 'yoursecrethere',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      secure: true,
+  }
+  }
+  )
+  )
+passport.use(
+  new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    // Match user
+    User.findOne({
+      email: email
+    }).then(user => {
+      if (!user) {
+        return done(null, false, { message: 'That email is not registered' });
+      }
+
+      // Match password
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) throw err;
+        if (isMatch) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: 'Password incorrect' });
+        }
+      });
+    });
+  })
+);
+
+passport.serializeUser(function(user: any, done: any) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id: any, done: any) {
+  User.findById(id, function(err: any, user: any) {
+    done(err, user);
+  });
+});
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use(flash());
@@ -37,7 +76,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-const port: Number = 8080;
+const port = 8080;
 
 app.use('/', index);
 app.use('/auth', auth);
