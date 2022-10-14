@@ -49,6 +49,10 @@ const UserSchema = new mongoose.Schema({
     isEmailShown: {
       type: Boolean,
       default: false
+    },
+    private: {
+      type: Boolean,
+      default: false
     }
     
   });
