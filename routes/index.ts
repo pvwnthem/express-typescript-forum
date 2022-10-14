@@ -18,6 +18,10 @@ router.get('/', (req, res) => {
 router.get('/login', (req, res) => {
     res.redirect('/auth/login')
 })
+router.get('/register', (req, res) => {
+    res.redirect('/auth/register')
+})
+
 router.get('/user/:username', (req, res) => {
     console.log(req.params.username);
     res.send(req.params.username);
