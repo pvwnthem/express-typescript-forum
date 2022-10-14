@@ -23,15 +23,20 @@ router.get('/user/:username', (req, res) => {
     res.send(req.params.username);
     const username: string = req.params.username;
     User.findOne({ username: username }, (err: any, user: any) => {
-        if (!user.private) {
-            if (!user.isEmailShown == false){
-                res.render('userpage', {username: user.name, email: 'this users email is private', followers: user.follwers, following: user.following, private: false })
-            } else if (user.isEmailShown == true) {
-                res.render('userpage', {username: user.name, email: user.email, followers: user.follwers, following: user.following, private: false})
-            }
+        if (user.private) {
+            res.render('user', { username: user.name, avatar: user.avatar, private: true })
         } else {
-            res.render('userpage', {username: user.name, email: 'this users email is private', followers: user.follwers, following: user.following, private: true })
+            if(!user.isEmailShown) {
+                res.render('user', {username: user.name, email: 'this users email is private', bio: user.bio, followers: user.follwers, following: user.following, private: false })
+            } else {
+                res.render('user', { username: user.name, email: user.email, followers: user.follwers, bio: user.bio, following: user.following, private: false })
+            }
+            
         }
+
+
+
+        
         
     })
 })
