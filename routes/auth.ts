@@ -30,7 +30,7 @@ router.get('/register', auth.forwardAuthenticated, (req: any, res: any) => {
 router.post('/register', (req, res, next) => {
     const {email, name, password, password2} = req.body;
     let errors: Array<Object> = []
-    if(!email || !name || !password || password2) {
+    if(!email || !name || !password || !password2) {
       errors.push({msg: 'Please enter all fields'})
 
     }
