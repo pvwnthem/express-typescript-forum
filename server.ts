@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 app.use(session({
-  secret: 'yoursecrethere',
+  secret: 'yoursecret',
   resave: false,
   saveUninitialized: false,
   cookie: {

@@ -10,8 +10,9 @@ router.get('/login', auth.forwardAuthenticated, (req: any, res: any) => {
     res.render('login')
 })
 router.post('/login', (req, res, next) => {
+
     passport.authenticate('local', {
-      successRedirect: '/home',
+      successRedirect: '/api/user/1234',
       failureRedirect: '/auth/login',
       failureFlash: true
     })(req, res, next);
