@@ -79,13 +79,35 @@
                           
                     </a>
                 </li>
+                <li class="mt-40 flex w-full px-2">
+                    
+                        <div id="card" class="w-full rounded-full flex bg-white px-4 py-2 mt-4">
+                          <img id="pfp" class="w-12 h-12 rounded-full bg-black" src="e" ></img>
+                          
+                          <div id="name" class="text-black my-auto ml-2 text-3xl"></div>
+                        </div> 
+                          
+                  
+                </li>
                 
             </ul>
         </div>
+        <!--stuff goes here-->
     </div>
+    <p id="hello" class="hidden"><%= user.avatar %></p>
+    <p id="namep" class="hidden"><%= user.name %></p>
 </body>
 </html>
-
+<script>
+    function setdata() {
+        var pic = document.getElementById("hello").innerText
+        document.getElementById("pfp").src = pic
+        var name = document.getElementById("namep").innerText
+        document.getElementById("name").innerHTML = name
+    }
+    
+    window.onload = setdata
+</script>
 <style>
     .navli:hover {
         background-color: rgb(85, 85, 85);

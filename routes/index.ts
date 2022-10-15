@@ -6,6 +6,7 @@ import ensureAuthenticated from '../config/auth'
 const db: string = dburl.dburl
 const ensureauth = ensureAuthenticated.ensureAuthenticated
 import mongoose from 'mongoose';
+import {resolveidtoname, resolvenametoid} from '../utils/resolvepost'
 mongoose.connect(db).then(() => {
     console.log('mongodb connection established');
   }).catch(err => {
@@ -45,7 +46,9 @@ router.get('/user/:username', (req, res) => {
         
     })
 })
-
+router.get('/home', (req, res)  => {
+    res.render('home', {user: req.user})
+})
 export default router;
 
 
