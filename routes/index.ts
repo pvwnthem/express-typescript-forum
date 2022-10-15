@@ -2,9 +2,9 @@ import express from 'express';
 const router = express.Router();
 import User from '../models/User'
 import dburl from '../config/keys'
-
+import ensureAuthenticated from '../config/auth'
 const db: string = dburl.dburl
-
+const ensureauth = ensureAuthenticated.ensureAuthenticated
 import mongoose from 'mongoose';
 mongoose.connect(db).then(() => {
     console.log('mongodb connection established');
@@ -24,6 +24,7 @@ router.get('/register', (req, res) => {
 
 router.get('/user/:username', (req, res) => {
     console.log(req.params.username);
+    console.log(req.user)
     res.send(req.params.username);
     const username: string = req.params.username;
     User.findOne({ username: username }, (err: any, user: any) => {
@@ -46,3 +47,6 @@ router.get('/user/:username', (req, res) => {
 })
 
 export default router;
+
+
+// dms can all be stored in a db, when user loads dm page with user it renders all messages with the sendto attribute with thier id or username

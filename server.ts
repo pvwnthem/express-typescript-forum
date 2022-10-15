@@ -17,53 +17,55 @@ import User from './models/User'
 
 const app = express();
 
+
+
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(passport.initialize());
+app.use(express.json())
 app.use(session({
   secret: 'yoursecret',
   resave: false,
   saveUninitialized: false,
-  cookie: {
-      secure: true,
-  }
+
   }
   )
   )
 passport.use(
-  new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-    // Match user
-    User.findOne({
-      email: email
-    }).then(user => {
-      if (!user) {
-        return done(null, false, { message: 'That email is not registered' });
-      }
-
-      // Match password
-      bcrypt.compare(password, user.password, (err, isMatch) => {
-        if (err) throw err;
-        if (isMatch) {
-          return done(null, user);
-        } else {
-          return done(null, false, { message: 'Password incorrect' });
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+      // Match user
+      User.findOne({
+        email: email
+      }).then(user => {
+        if (!user) {
+          return done(null, false, { message: 'That email is not registered' });
         }
+  
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: 'Password incorrect' });
+          }
+        });
       });
-    });
-  })
-);
-
-passport.serializeUser(function(user: any, done: any) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id: any, done: any) {
-  User.findById(id, function(err: any, user: any) {
-    done(err, user);
+    })
+  );
+  
+  passport.serializeUser(function(user: any, done: any) {
+    done(null, user.id);
   });
-});
+  
+  passport.deserializeUser(function(id: any, done: any) {
+    User.findById(id, function(err: any, user: any) {
+      done(err, user);
+    });
+  });
+app.use(passport.initialize());
+app.use(passport.session())
+  
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use(flash());
