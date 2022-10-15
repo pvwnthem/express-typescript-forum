@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link href=
-"https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    "https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
         rel="stylesheet">
-    <title>Home</title>
 </head>
 <body>
     <div class="container w-screen h-screen mx-auto bg-red-500 flex">
-        <%- include("./navigation.ejs"); %>
-        <!--stuff goes here-->
+        <%- include("./navigation.ejs");%>
+        <div>
+            <div id="card">
+                <p><%=username%></p>
+                <p><%=bio%></p>
+                <p><%=email%></p>
+                <p><%=avatar%></p>
+                <p><%=followers%></p>
+                <p><%=following%></p>
+            </div>
+        </div>
     </div>
     <p id="hello" class="hidden"><%= user.avatar %></p>
     <p id="namep" class="hidden"><%= user.name %></p>

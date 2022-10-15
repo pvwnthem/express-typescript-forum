@@ -53,6 +53,10 @@ const UserSchema = new mongoose.Schema({
     private: {
       type: Boolean,
       default: false
+    }, 
+    banner: {
+      type: String,
+      default: ''
     }
     
   });
