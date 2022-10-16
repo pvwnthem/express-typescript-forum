@@ -49,8 +49,8 @@ router.get('/user/:username', ensureauth, (req, res) => {
             
             }
         } else {
-            res.send('not found')
-            //res.render('404-user')
+            
+            res.render('404-user' , {user: req.user})
         }
     
         if(err){
