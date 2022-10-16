@@ -12,63 +12,10 @@ import session from 'express-session';
 import local from 'passport-local'
 const LocalStrategy = local.Strategy;
 import bcrypt from 'bcrypt';
-import { io } from 'socket.io-client';
-
-
-
-//make ws server
-
-//import { Server } from 'socket.io';
-//import { createServer } from 'http';
-
-
-
-
-//console.log("hi")
-
-//make ws server
-//const httpServer = createServer((req, res) => {
-  //if (req.url !== "/") {
-    //res.writeHead(404);
-    //res.end("Not found");
-    //return;
-//}})
-//const ioserver: any = new Server(httpServer);
-
-//ioserver.on('connection', (socket: any) => {
-  //socket.emit('hello world!', socket.id)
-
-  //socket.on('sendmessage', (message: string) => {
-      //console.log(message);
-  //})
-//})
-
-//httpServer.listen(3000, () => {
-    //console.log("ws online")
-//})
-
-
-
-
-
-
-
-
-//const socket = io("ws://localhost:3000")
-
-//socket.on('hello world!', () =>{
-  //console.log('socket responded hello world!');
-
-//})
-//socket.emit('sendmessage', 'hi')
 // Load User model
 import User from './models/User'
 
 const app = express();
-
-
-
-
 
 
 
