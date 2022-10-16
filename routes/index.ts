@@ -36,17 +36,23 @@ router.get('/user/:username', ensureauth, (req, res) => {
     
     User.findOne({name: req.params.username }, (err: any, user: any) => {
         console.log(user)
-        if (user.private) {
-            res.render('user', {user: req.user, private: true })
-        } else {
-            if(!user.isEmailShown) {
-                res.render('user', {user: req.user, username: user.name, avatar: user.avatar, email: 'this users email is private', bio: user.bio, followers: user.follwers, following: user.following, private: false })
+        if(user) {
+            if (user.private) {
+                res.render('user', {user: req.user, private: true })
             } else {
-                res.render('user', { user: req.user, username: user.name, email: user.email, avatar: user.avatar, followers: user.follwers, bio: user.bio, following: user.following, private: false })
-            }
+                if(!user.isEmailShown) {
+                    res.render('user', {user: req.user, username: user.name, avatar: user.avatar, email: 'this users email is private', bio: user.bio, followers: user.follwers, following: user.following, private: false })
+                } else {
+                    res.render('user', { user: req.user, username: user.name, email: user.email, avatar: user.avatar, followers: user.follwers, bio: user.bio, following: user.following, private: false })
+                }
+                
             
-        
+            }
+        } else {
+            res.send('not found')
+            //res.render('404-user')
         }
+    
         if(err){
             console.log(err)
         } 
