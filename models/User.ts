@@ -57,7 +57,12 @@ const UserSchema = new mongoose.Schema({
     banner: {
       type: String,
       default: ''
-    }
+    },
+    verified: {
+      type: Boolean,
+      default: false
+    },
+    
     
   });
   
