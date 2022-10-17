@@ -10,19 +10,24 @@
         rel="stylesheet">
         
 </head>
-<body>
-    <div class="container w-screen h-screen mx-auto bg-red-500 flex">
-        <%- include("./navigation.ejs");%>
-        <div>
-            <div id="card">
-                <p><%=username%></p>
-                <p><%=bio%></p>
-                <p><%=email%></p>
-                <p><%=avatar%></p>
-                <p><%=followers%></p>
-                <p><%=following%></p>
-            </div>
+<body class="flex">
+    <div class="container h-screen bg-red-500 left-0 flex">
+        
+         <div id="card" class="">
+            <p><%=username%></p>
+            <p><%=bio%></p>
+            <p><%=email%></p>
+            <p><%=avatar%></p>
+            <p><%=followers%></p>
+            <p><%=following%></p>
         </div>
+        <!--stuff goes here-->
+       
+    </div>
+    
+    </div>
+        
+        
     </div>
     <p id="hello" class="hidden"><%= user.avatar %></p>
     <p id="namep" class="hidden"><%= user.name %></p>

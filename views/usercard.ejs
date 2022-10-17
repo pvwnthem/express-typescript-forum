@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href=
+    "https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+        rel="stylesheet">
+        
+</head>
+<body class="flex">
+    <div class="container h-screen bg-red-500 left-0 flex">
+        
+         
+        <!--stuff goes here-->
+       
+    </div>
+    
+    </div>
+        
+        
+    </div>
+    <p id="hello" class="hidden"><%= user.avatar %></p>
+    <p id="namep" class="hidden"><%= user.name %></p>
+</body>
+</html>
+<script>
+    function setdata() {
+        var pic = document.getElementById("hello").innerText
+        document.getElementById("pfp").src = pic
+        var name = document.getElementById("namep").innerText
+        document.getElementById("name").innerHTML = name
+    }
+    
+    window.onload = setdata
+    
+
+
+
+
+
+</script>
