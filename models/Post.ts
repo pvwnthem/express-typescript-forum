@@ -20,15 +20,15 @@ const UserSchema = new mongoose.Schema({
             timestamp: Number
           }
         ],
-        required: true
+        required: false
       },
       likers: {
         type: [String],
-        required: true
+        required: false
       },
       likesCount: {
         type: Number,
-        required: true
+        required: false
       },
       text: {
         type: String,
@@ -36,8 +36,8 @@ const UserSchema = new mongoose.Schema({
         required: true
       },
       timestamp: {
-        type: Number,
-        required: true
+        type: Date,
+        default: Date.now
       }
     
   });

@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const messageschema = new mongoose.Schema({
-    sentBy: {
+    from: {
         type: String,
         required: true
     },
-    sentTo: {
+    to: {
         type: String,
         required: true
     },
@@ -22,6 +22,10 @@ const messageschema = new mongoose.Schema({
         type: [String],
         required: false,
         default: []
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 
 });

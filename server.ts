@@ -11,13 +11,36 @@ import * as bodyParser from 'body-parser';
 import session from 'express-session';
 import local from 'passport-local'
 const LocalStrategy = local.Strategy;
+//import { createServer } from "http";
+//import { Server } from "socket.io";
 import bcrypt from 'bcrypt';
 // Load User model
 import User from './models/User'
-
+//const httpServer = createServer((req, res) => {
+  //if (req.url !== "/") {
+    //res.writeHead(404);
+    //res.end("Not found");
+    //return;
+//}})
 const app = express();
 
+//const io = new Server(httpServer, {
+  // Socket.IO options
+//});
 
+//io.on("connection", (socket) => {
+  //console.log(`connect ${socket.id}`);
+  //socket.on("message", (message) => {
+    //console.log(message)
+  //})
+  //socket.on("disconnect", (reason) => {
+    //console.log(`disconnect ${socket.id} due to ${reason}`);
+  //});
+//});
+
+//httpServer.listen(3000, function() {
+  //console.log(" ws listening on 3000");
+//});
 
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.json());

@@ -68,6 +68,9 @@ router.get('/user/:username', ensureauth, (req, res) => {
 router.get('/home', (req, res)  => {
     res.render('home', {user: req.user})
 })
+router.get('/newpost', (req, res) => {
+    res.render('newpost', {user: req.user})
+})
 export default router;
 
 
